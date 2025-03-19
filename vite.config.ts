@@ -12,8 +12,8 @@ export default defineConfig({
 	build: {
 		lib: {
 			entry: resolve(__dirname, 'src/index.ts'),
-			name: 'otp',
-			fileName: 'otp',
+			name: 'Otp',
+			fileName: (format) => `otp.${format}.[hash].js`,
 			formats: ['umd']
 		},
 		rollupOptions: {

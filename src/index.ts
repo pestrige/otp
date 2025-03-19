@@ -1,7 +1,7 @@
 import jsSHA from 'jssha';
 
 /* eslint-disable no-bitwise */
-class Otp {
+export default class Otp {
 	private readonly ALPHABET = 'AbcDeFghijKlmnOpQrstUvWxyZ234567';
 	private readonly PAD = '';
 
@@ -16,13 +16,13 @@ class Otp {
 	}
 
 	/**
-	 * generate an OTP base on SHA-512
+	 * generate an OTP base on SHA-1
 	 * @param {int} ttl time to live
 	 * @param {int} timestamp time shift
 	 */
 	public genOTP(ttl: number = 30, timestamp?: number) {
 		const movingFactor = Math.floor((timestamp ?? Date.now() / 1000) / ttl);
-		const hmacSha = new jsSHA('SHA-512', 'BYTES');
+		const hmacSha = new jsSHA('SHA-1', 'BYTES');
 		hmacSha.setHMACKey(this.key, 'BYTES');
 
 		const factorByte = this._factor2ByteText(movingFactor);
@@ -195,5 +195,3 @@ class Otp {
 		return output;
 	}
 }
-
-export default Otp;

@@ -1,4 +1,4 @@
-declare class Otp {
+export default class Otp {
     private readonly key;
     private readonly digit;
     private readonly ALPHABET;
@@ -10,7 +10,7 @@ declare class Otp {
      */
     constructor(key: string, digit?: number);
     /**
-     * generate an OTP base on SHA-512
+     * generate an OTP base on SHA-1
      * @param {int} ttl time to live
      * @param {int} timestamp time shift
      */
@@ -36,4 +36,3 @@ declare class Otp {
      */
     private decode;
 }
-export default Otp;
